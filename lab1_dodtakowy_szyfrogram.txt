@@ -1,0 +1,12 @@
+14. "Pu³kownik móg³ listy rozsy³aæ z wielu miejsc rozsianych po ca³ej okolicy, p"
+
+Na podstawie szyfrogramu nr 10 odczytanego z internetu:
+14. "Pu³kownik móg³ listy rozsy³aæ z wielu miejsc rozsianych po ca³ej okolicy, móg³ dawaæ je do wys³ania swojej pokojówce czy szoferowi, móg³ kluczyæ i zwodziæ obserwatorów, zatem trzeba by³o przygotowaæ si"
+
+Na podstawie otrzymanych szyfrogramów uda³o siê odszyfrowaæ 9 z 10 wiadomoœci w ca³oœci.
+Idea szyfru z kluczem jednorazowym zak³ada m. in., ¿e d³ugoœæ klucza jest taka sama jak d³ugoœæ szyfrowanej wiadomoœci.
+Dla najd³u¿szej wiadomoœci nie istnia³a druga wiadomoœæ o tej samej d³ugoœci, aby wyznaczyæ tak d³ugi klucz.
+Dlatego najd³u¿sza wiadomoœæ zosta³a odszyfrowana w takiej d³ugoœci ile wynosi d³ugoœæ drugiej z kolei najd³u¿szej wiadomoœci.
+
+Jednak¿e, na podstawie odszyfrowanych wiadomoœci znaleziono w internecie artyku³ z których one pochodz¹ (https://zaufanatrzeciastrona.pl/post/jak-czechoslowacki-kontrwywiad-wegierskich-szpiegow-za-nos-wodzil/)
+Na tej podstawie odszyfrowano ca³oœæ najd³u¿szej wiadomoœci.
