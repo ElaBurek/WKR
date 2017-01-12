@@ -1,0 +1,68 @@
+	
+   Celem laboratorium by³o porównanie wyników dzia³ania funkcji generuj¹cych funkcje skrótu, dla dwóch par plików,
+z których zawartoœæ plików pierwszej pary by³y zupe³nie ró¿ne, pliki drugiej pary ró¿ni³y siê jednym zdaniem w 39 linijce tekstu.
+Przetestowane funkcje generuj¹ce skrót:
+- MD5
+- SHA256
+- md5deep - pakiet pozwalaj¹cy na obliczanie funkcji skrótu wed³ug wszystkich najpopularniejszych algorytmów haszowania, 
+takich jak MD5, SHA* i innych
+- ssdeep - to narzêdzie pozwalaj¹ce okreœliæ stopieñ podobieñstwa danych plików
+
+Zalet¹ funkcji haszuj¹cych takich jak MD5, SHA256 jest to, ¿e zmiana jednego bitu w strumieniu danych wejœciowych 
+powoduje wygenerowanie zupe³nie innej funkcji skrótu.
+Czyli za pomoc¹ funckji haszuj¹cej mo¿na wykazaæ, ¿e pliki s¹ ró¿ne, ale nie wiadomo jak bardzo siê od siebie ró¿ni¹.
+Pakiet ssdeep dzieli najpierw plik wejœciowy na szereg bloków danych, nastêpnie oblicza wartoœci funkcji skrótu
+dla poszczególnych fragmentów i na koniec u¿ywa utworzonej w ten sposób listy skrótów skrótów do okreœlenia podobieñstwa dwóch plików.
+
+*****************************************************************************************************************************************
+Poni¿ej przedstawiono otrzymane wyniki:
+(wartoœci funkcji skrótu dla md5 i sha zosta³y zamienione z systemu szesnastkowego na dziesiêtny)
+
+md5
+
+plik1_1.txt:   3b7d50bd563fbea92567b5e50ddd4031		// 7.907512645221067e+37
+plik1_2.txt:   03f59bcca483e01537fd87aa69bdfa25		// 5.2629567046444686e+36
+plik2_1.txt:   be03c160d1a2f61abe1395e69c90b554		// 2.525728182655461e+38
+plik2_2.txt:   ac775b9e0f490eb55dc877fc382fb0da		// 2.292469568232254e+38
+
+sha256
+
+plik1_1.txt:   4c35bdafe302aa0ff3380bd1c9b75239d268bb8aed45e1c302697ae67459198e		// 3.44707285587187e+76
+plik1_2.txt:   e7e20c4a6e802609821d63db9ebcfd75f17c342b66cdd460bf216b7225265358		// 1.0488366028700374e+77
+plik2_1.txt:   8e8d89aa65661291fb113428eddbb4193627cab65528e65e294a7a8bc8e61c6a		// 6.447850006807655e+76
+plik2_2.txt:   e9a8522f0bc8d5784dacaa01095b41a0812b8f9bdac66cb6c7dce4796cc0a221		// 1.0568629123834282e+77
+
+md5deep
+
+3b7d50bd563fbea92567b5e50ddd4031  c:\pliki\plik1_1.txt		// 7.907512645221067e+37
+03f59bcca483e01537fd87aa69bdfa25  c:\pliki\plik1_2.txt		// 5.2629567046444686e+36
+be03c160d1a2f61abe1395e69c90b554  c:\pliki\plik2_1.txt		// 2.525728182655461e+38
+ac775b9e0f490eb55dc877fc382fb0da  c:\pliki\plik2_2.txt		// 2.292469568232254e+38
+
+ssdeep
+
+ssdeep,1.1--blocksize:hash:hash,filename
+384:1KWQ4WlnvhQx89/O/bwoBJwawkux5TAV/fVmr42:1BQ4WlpgBwawk2QfVmr42,"c:\pliki\plik1_1.txt"			
+ssdeep,1.1--blocksize:hash:hash,filename
+384:ddWRr/1PeQkNATpLDo4x5R3WgdLGK4G2OyJQcLw2qU8yqBTix8nwE:ddWR5PeVNA1LDJdWgsK4nOAHLBqUWTi6,"c:\pliki\plik1_2.txt"
+
+ssdeep,1.1--blocksize:hash:hash,filename
+384:h+0NPqtvtOhBA+K+jNURFUO4K//8e8jjaD/e2XjODMoAn:h+0NJrA+K+jNURFwK/Ue8CDm2yDMoA,"c:\pliki\plik2_1.txt"			
+ssdeep,1.1--blocksize:hash:hash,filename
+384:hX0NPqtvtOhBA+K+jNURFUO4K//8e8jjaD/e2XjODMoAn:hX0NJrA+K+jNURFwK/Ue8CDm2yDMoA,"c:\pliki\plik2_2.txt"
+*****************************************************************************************************************************************
+
+Jak widaæ z uzyskanych wyników, wartoœci skrótu, wyznaczone przez funkcje haszuj¹ce, dla plików z ka¿dej pary s¹ znacznie ró¿ne, nawet dla plików ró¿ni¹cych siê tylko jednym zdaniem.
+Ró¿nice wynosz¹:
+			MD5		SHA256
+pierwsza para:		7e+37		7e+76
+druga para:		2e+37		4e+76
+
+Natomiast wartoœci uzyskane z ssdeep dla pierwszej pary ró¿ni¹ siê w ka¿dym bloku:
+1KWQ4WlnvhQx89/O/bwoBJwawkux5TAV/fVmr42:1BQ4WlpgBwawk2QfVmr42
+ddWRr/1PeQkNATpLDo4x5R3WgdLGK4G2OyJQcLw2qU8yqBTix8nwE:ddWR5PeVNA1LDJdWgsK4nOAHLBqUWTi6
+
+Dla drugiej pary plików, ró¿nica wystêpuje tylko w drugim bloku:
+h+0NPqtvtOhBA+K+jNURFUO4K//8e8jjaD/e2XjODMoAn:h+0NJrA+K+jNURFwK/Ue8CDm2yDMoA
+hX0NPqtvtOhBA+K+jNURFUO4K//8e8jjaD/e2XjODMoAn:hX0NJrA+K+jNURFwK/Ue8CDm2yDMoA
+

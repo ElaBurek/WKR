@@ -1,0 +1,3 @@
+Rozmiar klucza RSA wynosi: 1024b
+Jest to rozmiar klucza dopuszczalny i uwa¿any za bezpieczny zgodnie z rekomendacj¹ NIST
+(Recommendation for Pair-Wise Key Establishment Schemes Using Integer Factorization Cryptography)
